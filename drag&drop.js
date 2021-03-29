@@ -81,7 +81,7 @@ add.addEventListener('click', function(){
   var newElement = document.createElement('LI');
   list.appendChild(newElement);
   newElement.setAttribute("draggable", "true");
-  newElement.setAttribute("contenteditable", "false");
+  newElement.setAttribute("contenteditable", "true");
   newElement.innerHTML= "<button class='btn'>X</button>  New list Item ";
 });
 
