@@ -7,19 +7,28 @@
 	<body>
 		<div>
 			<ol id="list">
-				<li class="element" draggable="true" contenteditable="false" id="item">List Item 1 <div></div><button class="btn">X</button></li>
-				<li class="element" draggable="true" contenteditable="false" id="item">List Item 2 <button class="btn">X</button></li>
-				<li class="element" draggable="true" contenteditable="false" id="item">List Item 3 <button class="btn">X</button></li>
-				<li class="element" draggable="true" contenteditable="false" id="item">List Item 4 <button class="btn">X</button></li>
-				<li class="element" draggable="true" contenteditable="false" id="item">List Item 5 <button  class="btn">X</button></li>
-				<li class="element" draggable="true" contenteditable="false" id="item">List Item 6 <button class="btn">X</button></li>
-				<li class="element" draggable="true" contenteditable="false" id="item">List Item 7 <button class="btn">X</button></li>
-				<li class="element" draggable="true" contenteditable="false" id="item">List Item 8 <button class="btn">X</button></li>
-				<li class="element" draggable="true" contenteditable="false" id="item">List Item 9 <button class="btn">X</button></li>
-				<li class="element" draggable="true" contenteditable="false" id="item">List Item 10 <button class="btn">X</button></li>
+				<li class="element" draggable="true" contenteditable="false" id="item"><button class="btn">X</button>  List Item 1 </li>
+				<li class="element" draggable="true" contenteditable="false" id="item"><button class="btn">X</button>  List Item 2 </li>
+				<li class="element" draggable="true" contenteditable="false" id="item"><button class="btn">X</button>  List Item 3 </li>
+				<li class="element" draggable="true" contenteditable="false" id="item"><button class="btn">X</button>  List Item 4 </li>
+				<li class="element" draggable="true" contenteditable="false" id="item"><button class="btn">X</button>  List Item 5 </li>
+				<li class="element" draggable="true" contenteditable="false" id="item"><button class="btn">X</button>  List Item 6 </li>
+				<li class="element" draggable="true" contenteditable="false" id="item"><button class="btn">X</button>  List Item 7 </li>
+				<li class="element" draggable="true" contenteditable="false" id="item"><button class="btn">X</button>  List Item 8 </li>
+				<li class="element" draggable="true" contenteditable="false" id="item"><button class="btn">X</button>  List Item 9 </li>
+				<li class="element" draggable="true" contenteditable="false" id="item"><button class="btn">X</button>  List Item 10 </li>
 			</ol>
 			<button id="add">Add an element to the list</button>
 		</div>
 		<script src="drag&drop.js"></script>
+		<script>
+			$(document).ready(function() {
+
+				$(function() {
+				  $("#sortable").sortable({handle: '.handle'});
+				});
+				
+			});
+		</script>
 	</body>
 </html>

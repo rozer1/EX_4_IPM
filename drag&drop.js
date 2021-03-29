@@ -82,7 +82,7 @@ add.addEventListener('click', function(){
   list.appendChild(newElement);
   newElement.setAttribute("draggable", "true");
   newElement.setAttribute("contenteditable", "false");
-  newElement.innerHTML= "New list Item <button class='btn'>X</button>";
+  newElement.innerHTML= "<button class='btn'>X</button>  New list Item ";
 });
 
 list.addEventListener('click', function(e){
@@ -91,35 +91,3 @@ list.addEventListener('click', function(e){
     e.target.parentNode.remove();
     }
 });
-var elm = document.querySelector('[contenteditable]')
-
-// when the contenteditable gets focused, start listening to key presses
-elm.addEventListener('focus', onFocus)
-
-// when the contenteditable looses focus, remove "keydown" event listener
-elm.addEventListener('blur', onFocus)
-
-function onFocus(){
-  window.addEventListener('keydown', onKeyDown)
-}
-
-function onBlur(){
-  window.removeEventListener('keydown', onKeyDown)
-}
-
-function onKeyDown(e) {
-   if (e.keyCode != 9) return // tab key
-    
-    e.preventDefault();  // prevent default behaviour, which is "blur"
-
-    var sel = document.getSelection();
-    var range = sel.getRangeAt(0);
-
-    var tabNodeValue = '\u0009' // with 4 spaces: Array(4).join('\u00a0')
-    var tabNode = document.createTextNode(tabNodeValue);
-
-    range.insertNode(tabNode);
-
-    range.setStartAfter(tabNode);
-    range.setEndAfter(tabNode); 
-}
