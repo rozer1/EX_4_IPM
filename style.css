@@ -6,6 +6,13 @@ ol li {
   font-family:  'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
   font-size: 18px;
 }
+li {
+  cursor:move;
+  display:block;
+  padding:20px 10px;
+  background:white;
+  border-bottom:solid 1px gray;
+}
 
 #add {
   background-color: black;
@@ -48,4 +55,12 @@ ol li {
 .btn:active {
 position: relative;
 bottom: 2px;
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
+  min-height: 50px;
+  border: 1px solid black;
+  padding: 5px;
+  white-space: pre;  /* <-- needed in order to render "tab" unicode */
 }

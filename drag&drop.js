@@ -1,4 +1,30 @@
 var dragging = null;
+var list = document.getElementById('list');
+var add = document.getElementById('add');
+var listItem = document.getElementById("item");
+
+function contentEditable(node) {
+   node.setAttribute("contenteditable", true);
+}
+
+function edit(event) {
+  var button = event.target,
+  li = button.parentNode;
+  contentEditable(li);
+}
+
+list.addEventListener('mousedown', function(event) {
+  var editable = document.querySelectorAll("li.element");
+  var target = event.target;
+  var id = target.getAttribute("id");
+
+  editable.forEach(function(li){
+    li.setAttribute("contenteditable", false);
+  })
+
+ if(id == "btn") {edit(event)}
+ if(id == "item") {contentEditable(target)}
+})
 
 document.addEventListener('dragstart', function(event) {
     var target = getLI( event.target );
@@ -50,16 +76,13 @@ function getLI( target ) {
     }
 }
 
-var list = document.getElementById('list');
-var add = document.getElementById('add');
-
 //adding a new element to the list
 add.addEventListener('click', function(){
   var newElement = document.createElement('LI');
   list.appendChild(newElement);
   newElement.setAttribute("draggable", "true");
-  newElement.setAttribute("contenteditable", "true");
-  newElement.innerHTML= "New list Item<button class='btn'>X</button>";
+  newElement.setAttribute("contenteditable", "false");
+  newElement.innerHTML= "New list Item <button class='btn'>X</button>";
 });
 
 list.addEventListener('click', function(e){
@@ -68,3 +91,35 @@ list.addEventListener('click', function(e){
     e.target.parentNode.remove();
     }
 });
+var elm = document.querySelector('[contenteditable]')
+
+// when the contenteditable gets focused, start listening to key presses
+elm.addEventListener('focus', onFocus)
+
+// when the contenteditable looses focus, remove "keydown" event listener
+elm.addEventListener('blur', onFocus)
+
+function onFocus(){
+  window.addEventListener('keydown', onKeyDown)
+}
+
+function onBlur(){
+  window.removeEventListener('keydown', onKeyDown)
+}
+
+function onKeyDown(e) {
+   if (e.keyCode != 9) return // tab key
+    
+    e.preventDefault();  // prevent default behaviour, which is "blur"
+
+    var sel = document.getSelection();
+    var range = sel.getRangeAt(0);
+
+    var tabNodeValue = '\u0009' // with 4 spaces: Array(4).join('\u00a0')
+    var tabNode = document.createTextNode(tabNodeValue);
+
+    range.insertNode(tabNode);
+
+    range.setStartAfter(tabNode);
+    range.setEndAfter(tabNode); 
+}
